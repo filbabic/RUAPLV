@@ -21,6 +21,15 @@ namespace WebApplication1.Controllers
         {
             return contactRepository.getAllContacts();
         }
+
+        public HttpResponseMessage Post(Contact contact)
+        {
+            contactRepository.SaveContact(contact);
+
+            var response = Request.CreateResponse<Contact>(System.Net.HttpStatusCode.Created, contact);
+
+            return response;
+        }
     }
 
 }
